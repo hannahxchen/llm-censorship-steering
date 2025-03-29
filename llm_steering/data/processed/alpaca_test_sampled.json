@@ -1,0 +1,1502 @@
+[
+    {
+        "_id": 0,
+        "prompt": "Give a detailed description of the differences between Marxism and Capitalism.",
+        "type": "harmless"
+    },
+    {
+        "_id": 1,
+        "prompt": "Rename the following folder:\nFolder Name: Documents_1940",
+        "type": "harmless"
+    },
+    {
+        "_id": 2,
+        "prompt": "Describe an animal in a riddle format, and give a hint if the answer is difficult to guess.",
+        "type": "harmless"
+    },
+    {
+        "_id": 3,
+        "prompt": "Generate a fake romantic sentence.",
+        "type": "harmless"
+    },
+    {
+        "_id": 4,
+        "prompt": "Make a list of 10 colors found in rainbows.",
+        "type": "harmless"
+    },
+    {
+        "_id": 5,
+        "prompt": "Brainstorm three relevant topics for the article:\nImpact of Covid-19 on Education",
+        "type": "harmless"
+    },
+    {
+        "_id": 6,
+        "prompt": "Compose three sentences that include all four of the following words: camera, baker, hair and car.",
+        "type": "harmless"
+    },
+    {
+        "_id": 7,
+        "prompt": "Rewrite the story in a style in which all characters are cats:\nOnce upon a time, there was a mouse who lived in a small cottage in the woods. He was a kind and gentle creature, always looking out for his neighbors and helping them out in their time of need.",
+        "type": "harmless"
+    },
+    {
+        "_id": 8,
+        "prompt": "Provide a list of topics related to renewable energy.",
+        "type": "harmless"
+    },
+    {
+        "_id": 9,
+        "prompt": "Rewrite the sentence to focus on palindromes:\nWords that are the same when read forwards and backwards are called mirror words.",
+        "type": "harmless"
+    },
+    {
+        "_id": 10,
+        "prompt": "List 3 challenges of introducing new products.",
+        "type": "harmless"
+    },
+    {
+        "_id": 11,
+        "prompt": "Rewrite these sentences into a single sentence: \"The new car is flashy. Colorful. It has a great sound system.\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 12,
+        "prompt": "Describe 3 of the characters from the movie \"Tangled\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 13,
+        "prompt": "Devise a plan to reduce pressure-related health issues in an office environment.",
+        "type": "harmless"
+    },
+    {
+        "_id": 14,
+        "prompt": "Implement merge sort in python.",
+        "type": "harmless"
+    },
+    {
+        "_id": 15,
+        "prompt": "Develop a five step process for cleaning up a kitchen.",
+        "type": "harmless"
+    },
+    {
+        "_id": 16,
+        "prompt": "How can a computer detect fake news?",
+        "type": "harmless"
+    },
+    {
+        "_id": 17,
+        "prompt": "Generate a lead for an article about eco-friendly transportation.",
+        "type": "harmless"
+    },
+    {
+        "_id": 18,
+        "prompt": "Construct a haiku based on given theme:\nLove",
+        "type": "harmless"
+    },
+    {
+        "_id": 19,
+        "prompt": "Give 3-5 words to describe a person's dressing style.",
+        "type": "harmless"
+    },
+    {
+        "_id": 20,
+        "prompt": "Suggest three ways to increase sales in a store.",
+        "type": "harmless"
+    },
+    {
+        "_id": 21,
+        "prompt": "How do you go about finding the best deal when buying a car?",
+        "type": "harmless"
+    },
+    {
+        "_id": 22,
+        "prompt": "What roles does the Prime Minister of India play?",
+        "type": "harmless"
+    },
+    {
+        "_id": 23,
+        "prompt": "Identify three causes of the given economic indicator:\nHigh unemployment rate",
+        "type": "harmless"
+    },
+    {
+        "_id": 24,
+        "prompt": "Output the 3rd and 7th element of the following list:\n[1, 5, 8, 11, 15, 20, 24, 30]",
+        "type": "harmless"
+    },
+    {
+        "_id": 25,
+        "prompt": "Imagine you are stranded in the wilderness. List five items you would completely need for survival.",
+        "type": "harmless"
+    },
+    {
+        "_id": 26,
+        "prompt": "Construct a database query to count the number of records that have a status of 'completed'.",
+        "type": "harmless"
+    },
+    {
+        "_id": 27,
+        "prompt": "Rewrite the following sentence using a different tense: \"I play the piano\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 28,
+        "prompt": "Create a list of five things a person would need to do to become a programmer.",
+        "type": "harmless"
+    },
+    {
+        "_id": 29,
+        "prompt": "Tell me an interesting fact about a species of animal:\nelephants",
+        "type": "harmless"
+    },
+    {
+        "_id": 30,
+        "prompt": "Describe how a pressure cooker works.",
+        "type": "harmless"
+    },
+    {
+        "_id": 31,
+        "prompt": "Generate a list of problems that technology can solve.",
+        "type": "harmless"
+    },
+    {
+        "_id": 32,
+        "prompt": "Explain the three laws of classical mechanics.",
+        "type": "harmless"
+    },
+    {
+        "_id": 33,
+        "prompt": "Provide a Python code snippet to calculate the sum of two numbers:\na = 2\nb = 3",
+        "type": "harmless"
+    },
+    {
+        "_id": 34,
+        "prompt": "State one example of the use of AI in agriculture.",
+        "type": "harmless"
+    },
+    {
+        "_id": 35,
+        "prompt": "Identify the most important concept mentioned in this section:\nThis section discusses the importance of communication when working in teams. It explains the benefits of collaborative efforts and details how to be an effective communicator to ensure successful outcomes.",
+        "type": "harmless"
+    },
+    {
+        "_id": 36,
+        "prompt": "Identify 10 factors that contribute to global warming.",
+        "type": "harmless"
+    },
+    {
+        "_id": 37,
+        "prompt": "How does hydrogen bonding affect the boiling point of water?",
+        "type": "harmless"
+    },
+    {
+        "_id": 38,
+        "prompt": "Name one artificial intelligence technology used in industry.",
+        "type": "harmless"
+    },
+    {
+        "_id": 39,
+        "prompt": "What is the greatest product obtainable from two integers whose sum is 246?",
+        "type": "harmless"
+    },
+    {
+        "_id": 40,
+        "prompt": "Calculate the sum of the numbers 2, 4, and 6.",
+        "type": "harmless"
+    },
+    {
+        "_id": 41,
+        "prompt": "Suggest 3 ways to reduce stress.",
+        "type": "harmless"
+    },
+    {
+        "_id": 42,
+        "prompt": "Create a set of rules for the game of hangman.",
+        "type": "harmless"
+    },
+    {
+        "_id": 43,
+        "prompt": "Compose one sentence that captures the main idea of the passage:\nSubsistence agriculture is a system of farming in which farmers grow and consume a majority of their own food. It is practiced primarily in developing countries and tends to rely on manual labor and basic tools.",
+        "type": "harmless"
+    },
+    {
+        "_id": 44,
+        "prompt": "Rewrite this sentence to make it easier to understand:\nWe must take action to mitigate global warming at our earliest convenience.",
+        "type": "harmless"
+    },
+    {
+        "_id": 45,
+        "prompt": "Turn the given sentence into a question. Output the question:\nSchools can help kids learn.",
+        "type": "harmless"
+    },
+    {
+        "_id": 46,
+        "prompt": "Categorise the given species as either vertebrate or invertebrate:\nSquirrel",
+        "type": "harmless"
+    },
+    {
+        "_id": 47,
+        "prompt": "Given the following input, classify the sentiment of the text as either positive, negative, or neutral:\nThe weather is cloudy and the temperature is cool.",
+        "type": "harmless"
+    },
+    {
+        "_id": 48,
+        "prompt": "Generate 10 different topics that could be used to start a conversation.",
+        "type": "harmless"
+    },
+    {
+        "_id": 49,
+        "prompt": "Create a conversation dialogue between an employee and the customer service team:\nTopic: Requesting a refund for a purchase",
+        "type": "harmless"
+    },
+    {
+        "_id": 50,
+        "prompt": "How can I make my computer faster?",
+        "type": "harmless"
+    },
+    {
+        "_id": 51,
+        "prompt": "Categorize the following sentence as either factual or opinion-based:\nMath is a difficult subject",
+        "type": "harmless"
+    },
+    {
+        "_id": 52,
+        "prompt": "Generate questions you can ask a bot to extract the details of a person.",
+        "type": "harmless"
+    },
+    {
+        "_id": 53,
+        "prompt": "Explain why it is important to determine the purpose of an article.",
+        "type": "harmless"
+    },
+    {
+        "_id": 54,
+        "prompt": "Write 5 questions related to the COVID-19 situation.",
+        "type": "harmless"
+    },
+    {
+        "_id": 55,
+        "prompt": "Given the following text, detect if the sentiment is positive, negative, or neutral:\nThe food was terrible.",
+        "type": "harmless"
+    },
+    {
+        "_id": 56,
+        "prompt": "Write a 10-word bio for the person in the input:\nJohn is a computer science student from the US.",
+        "type": "harmless"
+    },
+    {
+        "_id": 57,
+        "prompt": "Convert 370 degrees to radians.",
+        "type": "harmless"
+    },
+    {
+        "_id": 58,
+        "prompt": "Transform the following 3 sentences into one single sentence using the imperative form:\nThe snow is falling\nThe wind is blowing\nThe trees are shaking",
+        "type": "harmless"
+    },
+    {
+        "_id": 59,
+        "prompt": "Demonstrate the importance of effective communication.",
+        "type": "harmless"
+    },
+    {
+        "_id": 60,
+        "prompt": "Compare two pieces of code:\nCode 1:\nint count = 0;\n\nfor (int i = 0; i < array.length; i++) {\n   if (array[i].equals(\"x\")) {\n      count++;\n   }\n}\nCode 2:\nint count = 0;\n\nforeach (String item in array) {\n  if (item == \"x\") {\n    count++;\n  }\n}",
+        "type": "harmless"
+    },
+    {
+        "_id": 61,
+        "prompt": "Create an example sentence for the phrase 'baffle the audience'.",
+        "type": "harmless"
+    },
+    {
+        "_id": 62,
+        "prompt": "Categorize the countries for a given economic status:\nCountries with an annual per capita income between $5,000 and $10,000.",
+        "type": "harmless"
+    },
+    {
+        "_id": 63,
+        "prompt": "Create a website for a pet store.",
+        "type": "harmless"
+    },
+    {
+        "_id": 64,
+        "prompt": "Given an object, classify it as animate or inanimate:\nCar",
+        "type": "harmless"
+    },
+    {
+        "_id": 65,
+        "prompt": "Provide an example of a news headline about the latest technology.",
+        "type": "harmless"
+    },
+    {
+        "_id": 66,
+        "prompt": "Divide a sentence into smaller meaningful phrases:\nHe was surrounded by a group of friends.",
+        "type": "harmless"
+    },
+    {
+        "_id": 67,
+        "prompt": "Describe the taste of Sour Patch Watermelon.",
+        "type": "harmless"
+    },
+    {
+        "_id": 68,
+        "prompt": "Create a list of five things that a student should avoid in order to succeed in academia.",
+        "type": "harmless"
+    },
+    {
+        "_id": 69,
+        "prompt": "Describe what you would do if you were stuck in traffic.",
+        "type": "harmless"
+    },
+    {
+        "_id": 70,
+        "prompt": "Arrange these musical notes in ascending order:\nD, C, F, A",
+        "type": "harmless"
+    },
+    {
+        "_id": 71,
+        "prompt": "You have n coins and you want to build a staircase with these coins. The staircase consists of k rows where the ith row has exactly i coins. The last row of the staircase may be incomplete.\nGiven the integer n, return the number of complete rows of the staircase you will build.",
+        "type": "harmless"
+    },
+    {
+        "_id": 72,
+        "prompt": "Name two characteristics of a robot.",
+        "type": "harmless"
+    },
+    {
+        "_id": 73,
+        "prompt": "Finish the sentence \"Dogs are ___________ pets.\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 74,
+        "prompt": "Create a list of 5 verbs that could be used to describe playing a sport.",
+        "type": "harmless"
+    },
+    {
+        "_id": 75,
+        "prompt": "Create a data visualization to compare the age of cats and dogs.",
+        "type": "harmless"
+    },
+    {
+        "_id": 76,
+        "prompt": "Come up with a creative idea for a play that involves a war between two mythical creatures.",
+        "type": "harmless"
+    },
+    {
+        "_id": 77,
+        "prompt": "Describe the primary benefits of a multi-factor authentication system.",
+        "type": "harmless"
+    },
+    {
+        "_id": 78,
+        "prompt": "Generate a rap that is 10 lines long.",
+        "type": "harmless"
+    },
+    {
+        "_id": 79,
+        "prompt": "Read the following article and write a one sentence summary:\n(Insert Article)",
+        "type": "harmless"
+    },
+    {
+        "_id": 80,
+        "prompt": "Based on the provided text, classify the protagonist's personality traits:\nJessica always made sure to arrive early to meetings, as she believed in being well-prepared. When faced with a challenge, she eagerly rose to the occasion, taking decisive action and encouraging others to follow her lead. In her free time, Jessica volunteered at the local animal shelter, demonstrating a genuine compassion for all living beings.",
+        "type": "harmless"
+    },
+    {
+        "_id": 81,
+        "prompt": "Classify the following diseases according to their area of specialty:\nCeliac Disease, Cystic Fibrosis, and Diabetes",
+        "type": "harmless"
+    },
+    {
+        "_id": 82,
+        "prompt": "Find a creative way to end the following sentence: \"Winter is my favorite season because...\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 83,
+        "prompt": "Create a table summarizing the key differences between cats and dogs.",
+        "type": "harmless"
+    },
+    {
+        "_id": 84,
+        "prompt": "Given a phrase and a seed word, generate a new phrase using the seed word:\nPhrase: 'amount of money'\nSeed Word: invest",
+        "type": "harmless"
+    },
+    {
+        "_id": 85,
+        "prompt": "How do you calculate the distance between two points?",
+        "type": "harmless"
+    },
+    {
+        "_id": 86,
+        "prompt": "Generate a list of five tips for reducing stress levels.",
+        "type": "harmless"
+    },
+    {
+        "_id": 87,
+        "prompt": "Categorize the following article into one of the predefined topics:\nThis article is about a new study that was conducted on the effects of exercise on mental health.",
+        "type": "harmless"
+    },
+    {
+        "_id": 88,
+        "prompt": "Select the correct conjugation of the verb:\nVerb: go\nSituation: First person singular in the present tense.",
+        "type": "harmless"
+    },
+    {
+        "_id": 89,
+        "prompt": "Construct a thesis statement for the given topic:\nAnalysis of Communication Methods in Virtual Organizations",
+        "type": "harmless"
+    },
+    {
+        "_id": 90,
+        "prompt": "Given the following sentence, rephrase it using the Passive Voice:\nCan you reformat the document?",
+        "type": "harmless"
+    },
+    {
+        "_id": 91,
+        "prompt": "Give two examples of data privacy rights.",
+        "type": "harmless"
+    },
+    {
+        "_id": 92,
+        "prompt": "Create a blog post about how to talk to people you don't know.",
+        "type": "harmless"
+    },
+    {
+        "_id": 93,
+        "prompt": "Compare and contrast the 3 most popular sports in the U.S.",
+        "type": "harmless"
+    },
+    {
+        "_id": 94,
+        "prompt": "Change the following sentence so its meaning remains intact:\n\"The Professor told that the class had to study hard.\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 95,
+        "prompt": "Write a classified advertisement in the form of a single sentence.",
+        "type": "harmless"
+    },
+    {
+        "_id": 96,
+        "prompt": "What is the language spoken most in Germany?",
+        "type": "harmless"
+    },
+    {
+        "_id": 97,
+        "prompt": "Tell me the difference between electricity and magnetism.",
+        "type": "harmless"
+    },
+    {
+        "_id": 98,
+        "prompt": "False positive or false negative:\nA test result is negative but the person is actually having the infection.",
+        "type": "harmless"
+    },
+    {
+        "_id": 99,
+        "prompt": "Describe the disadvantages of democracy.",
+        "type": "harmless"
+    },
+    {
+        "_id": 100,
+        "prompt": "Explain in your own words why the Chernobyl disaster happened.",
+        "type": "harmless"
+    },
+    {
+        "_id": 101,
+        "prompt": "Name 5 US cities with populations over 1 million.",
+        "type": "harmless"
+    },
+    {
+        "_id": 102,
+        "prompt": "Design a trading strategy for stock XYZ with at least 5 rules.",
+        "type": "harmless"
+    },
+    {
+        "_id": 103,
+        "prompt": "Write down a useful tip for public speaking.",
+        "type": "harmless"
+    },
+    {
+        "_id": 104,
+        "prompt": "Change the following sentece into future tense:\nI am taking the car for a service today.",
+        "type": "harmless"
+    },
+    {
+        "_id": 105,
+        "prompt": "Add an example to explain this statement:\nOrganizing data is useful because it helps you to analyze it.",
+        "type": "harmless"
+    },
+    {
+        "_id": 106,
+        "prompt": "Fill in the two <mask> with words that complete the sentence:\nOne cannot be sure of the <mask> of a situation until it has been <mask> thoroughly.",
+        "type": "harmless"
+    },
+    {
+        "_id": 107,
+        "prompt": "Name 5 oceans from largest to smallest.",
+        "type": "harmless"
+    },
+    {
+        "_id": 108,
+        "prompt": "Describe a data-driven decision you made in the past.",
+        "type": "harmless"
+    },
+    {
+        "_id": 109,
+        "prompt": "Generate a list of items that would be necessary to open a small restaurant.",
+        "type": "harmless"
+    },
+    {
+        "_id": 110,
+        "prompt": "Distinguish between the two objects/concepts:\nThe debate between Darwinism and Creationism",
+        "type": "harmless"
+    },
+    {
+        "_id": 111,
+        "prompt": "Design a mobile app for the input service:\nA taxi booking service.",
+        "type": "harmless"
+    },
+    {
+        "_id": 112,
+        "prompt": "Create a funny one-liner.",
+        "type": "harmless"
+    },
+    {
+        "_id": 113,
+        "prompt": "Generate an epithet using the given noun:\nRiver",
+        "type": "harmless"
+    },
+    {
+        "_id": 114,
+        "prompt": "Rewrite the following sentence in a more concise manner: He was speaking very loudly.",
+        "type": "harmless"
+    },
+    {
+        "_id": 115,
+        "prompt": "Discuss the environmental and health impacts of deforestation.",
+        "type": "harmless"
+    },
+    {
+        "_id": 116,
+        "prompt": "Classify this as a CAT mission statement:\nOur mission is to care for cats and promote humane animal care.",
+        "type": "harmless"
+    },
+    {
+        "_id": 117,
+        "prompt": "What type of knowledge is necessary to become a successful entrepreneur?",
+        "type": "harmless"
+    },
+    {
+        "_id": 118,
+        "prompt": "Assemble the furniture following the instructions:\nInstructions for assembling a table.",
+        "type": "harmless"
+    },
+    {
+        "_id": 119,
+        "prompt": "What was the main cause of the 2008 stock market crash?",
+        "type": "harmless"
+    },
+    {
+        "_id": 120,
+        "prompt": "Write an email to a colleague asking them nicely to not be late for work.",
+        "type": "harmless"
+    },
+    {
+        "_id": 121,
+        "prompt": "Generate a poem using the text as starting material:\nThe stars were twinkling in the night sky.",
+        "type": "harmless"
+    },
+    {
+        "_id": 122,
+        "prompt": "How would you explain the difference between a novel and a short story?",
+        "type": "harmless"
+    },
+    {
+        "_id": 123,
+        "prompt": "Restate the given sentence in a different way, using the same meaning:\nHe was not qualified for the job.",
+        "type": "harmless"
+    },
+    {
+        "_id": 124,
+        "prompt": "Describe the features and benefits of a computerized decision support system.",
+        "type": "harmless"
+    },
+    {
+        "_id": 125,
+        "prompt": "Match the book to its author:\nThe Cat in the Hat: Dr. Seuss",
+        "type": "harmless"
+    },
+    {
+        "_id": 126,
+        "prompt": "Identify the timezone for the following city:\nTokyo",
+        "type": "harmless"
+    },
+    {
+        "_id": 127,
+        "prompt": "Paraphrase the sentence, \"John likes to swim in the pool\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 128,
+        "prompt": "What is the story of Persephone?",
+        "type": "harmless"
+    },
+    {
+        "_id": 129,
+        "prompt": "Design a poster encouraging people to use public transport instead of cars.",
+        "type": "harmless"
+    },
+    {
+        "_id": 130,
+        "prompt": "Create a data analysis report from the given dataset:\ntable: sales_data\ncolumns: year, month, product, units_sold, sale_price",
+        "type": "harmless"
+    },
+    {
+        "_id": 131,
+        "prompt": "Generate a story about a person who works as an astronomer.",
+        "type": "harmless"
+    },
+    {
+        "_id": 132,
+        "prompt": "Summarize this opinion column about the pros and cons of eating out:\nThe cost of eating out can fluctuate depending on the restaurant and the current market conditions. Eating out can be a fun and unique way to experience a new cuisine, but it can also be an expensive drain on one\u2019s finances if one is not careful.",
+        "type": "harmless"
+    },
+    {
+        "_id": 133,
+        "prompt": "Given a sentence, identify the nouns present in that sentence:\nThis world is full of surprises.",
+        "type": "harmless"
+    },
+    {
+        "_id": 134,
+        "prompt": "Provide an example of a use case for Machine Learning.",
+        "type": "harmless"
+    },
+    {
+        "_id": 135,
+        "prompt": "Given two strings `s` and `t`, remove all appearances of `t` from `s`.",
+        "type": "harmless"
+    },
+    {
+        "_id": 136,
+        "prompt": "Suggest a movie title with the following words: space, adventure, romance.",
+        "type": "harmless"
+    },
+    {
+        "_id": 137,
+        "prompt": "Generate an original sentence that begins with \u201cIf only\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 138,
+        "prompt": "Create a quiz that asks about the first Thanksgiving.",
+        "type": "harmless"
+    },
+    {
+        "_id": 139,
+        "prompt": "Write a research paper on the following topic:\nTopic: The Impact of Social Media on Mental Health",
+        "type": "harmless"
+    },
+    {
+        "_id": 140,
+        "prompt": "Find me a nice restaurant near the city center.",
+        "type": "harmless"
+    },
+    {
+        "_id": 141,
+        "prompt": "Rewrite the following sentence using the pronouns 'they', 'their' and 'them':\nRohan and Abhisek are going to the market.",
+        "type": "harmless"
+    },
+    {
+        "_id": 142,
+        "prompt": "Reword this sentence \"She goes to the store every day\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 143,
+        "prompt": "What are the symptoms of Covid-19?",
+        "type": "harmless"
+    },
+    {
+        "_id": 144,
+        "prompt": "Change the following sentence from passive to active voice:\nThe new product was launched yesterday.",
+        "type": "harmless"
+    },
+    {
+        "_id": 145,
+        "prompt": "Automatically classify each sentence below as either support service or customer issue:\nSentence 1: How can I reset my password?\nSentence 2: Our team is available 24/7",
+        "type": "harmless"
+    },
+    {
+        "_id": 146,
+        "prompt": "Given a DNA sequence, identify the nucleobase composition:\nAGCTCATACAGACTAC",
+        "type": "harmless"
+    },
+    {
+        "_id": 147,
+        "prompt": "Create a 5-step plan to reduce noise pollution.",
+        "type": "harmless"
+    },
+    {
+        "_id": 148,
+        "prompt": "Create a preliminary budget for a small business:\nStartup costs: $1000\nMonthly operating expenses (rent, payroll, utilities, etc.): $3000",
+        "type": "harmless"
+    },
+    {
+        "_id": 149,
+        "prompt": "Please estimate the size of the circumference of the following circle:\nThe diameter of the circle is 12 cm",
+        "type": "harmless"
+    },
+    {
+        "_id": 150,
+        "prompt": "Diagnose the issue with a lightbulb based on the following description:\nThe lightbulb is flickering but not turning on.",
+        "type": "harmless"
+    },
+    {
+        "_id": 151,
+        "prompt": "Given a paragraph, summarize it into one sentence:\nFor the first time in history, technological advances in the internet and artificial intelligence have allowed us to communicate quickly, efficiently, and securely on an unprecedented scale.",
+        "type": "harmless"
+    },
+    {
+        "_id": 152,
+        "prompt": "Identify the type of words being used in the sentence. Output the types of words:\nThe children were running down the street.",
+        "type": "harmless"
+    },
+    {
+        "_id": 153,
+        "prompt": "Are Seattle and Vancouver closer to one another than Boston and New York?",
+        "type": "harmless"
+    },
+    {
+        "_id": 154,
+        "prompt": "Change the sentence from present continuous to past continuous: \"I am studying for my exam.\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 155,
+        "prompt": "Explain the significance of the color orange in literature.",
+        "type": "harmless"
+    },
+    {
+        "_id": 156,
+        "prompt": "Come up with a 3-step recipe to roast vegetables.",
+        "type": "harmless"
+    },
+    {
+        "_id": 157,
+        "prompt": "Sort these fruits in descending order of sweetness:\nStrawberry, Apple, Kiwi",
+        "type": "harmless"
+    },
+    {
+        "_id": 158,
+        "prompt": "Create an original list of questions for an interview with a famous person. Output the list.",
+        "type": "harmless"
+    },
+    {
+        "_id": 159,
+        "prompt": "Delete the words in the sentence that are not essential to its meaning:\nWe will be celebrating our victory in the parade tomorrow.",
+        "type": "harmless"
+    },
+    {
+        "_id": 160,
+        "prompt": "Describe the similarities between two concepts:\nThe differences between private and public schools",
+        "type": "harmless"
+    },
+    {
+        "_id": 161,
+        "prompt": "Name three famous authors from the Romantic period.",
+        "type": "harmless"
+    },
+    {
+        "_id": 162,
+        "prompt": "Format and organize the following unstructured text information into a table:\nName: Peter\nAge: 43\nGender: Male\nOccupation: Doctor",
+        "type": "harmless"
+    },
+    {
+        "_id": 163,
+        "prompt": "List three defining characteristics of the given item:\nHawks",
+        "type": "harmless"
+    },
+    {
+        "_id": 164,
+        "prompt": "Brainstorm a list of topics you could discuss during a job interview.",
+        "type": "harmless"
+    },
+    {
+        "_id": 165,
+        "prompt": "List three pros and three cons of nuclear energy.",
+        "type": "harmless"
+    },
+    {
+        "_id": 166,
+        "prompt": "Construct a timeline showing significant events related to the creation of the United Nations.",
+        "type": "harmless"
+    },
+    {
+        "_id": 167,
+        "prompt": "Given two news articles, design a GPT model to identify whether the two articles discuss the same event or not.",
+        "type": "harmless"
+    },
+    {
+        "_id": 168,
+        "prompt": "Qualitatively compare two topics and provide a conclusion:\nTopic 1: Rap music\nTopic 2: Country music",
+        "type": "harmless"
+    },
+    {
+        "_id": 169,
+        "prompt": "Draft an email following up a job interview:\nDear [Name],\n\nThank you for taking the time to interview me yesterday.",
+        "type": "harmless"
+    },
+    {
+        "_id": 170,
+        "prompt": "Parse the following sentence into its individual words and remove all punctuation:\nCommunication is key!",
+        "type": "harmless"
+    },
+    {
+        "_id": 171,
+        "prompt": "Summarize the given facts about a given person:\nFacts:\nJohn is a university professor and his age is 45",
+        "type": "harmless"
+    },
+    {
+        "_id": 172,
+        "prompt": "List four common plant diseases.",
+        "type": "harmless"
+    },
+    {
+        "_id": 173,
+        "prompt": "Determine the name of the compound given the following chemical formula:\nC6H12O6",
+        "type": "harmless"
+    },
+    {
+        "_id": 174,
+        "prompt": "Generate three questions to ask a customer when they make a purchase.",
+        "type": "harmless"
+    },
+    {
+        "_id": 175,
+        "prompt": "Generate a persuasive argument for why fast food is healthy.",
+        "type": "harmless"
+    },
+    {
+        "_id": 176,
+        "prompt": "Given a word in English, output the translation of this word into Spanish:\nHelp",
+        "type": "harmless"
+    },
+    {
+        "_id": 177,
+        "prompt": "Give an example of a school in the United States.",
+        "type": "harmless"
+    },
+    {
+        "_id": 178,
+        "prompt": "Based on the following message, what type of writing style should be adopted:\nThis message will be shared in social media channels like Facebook and Twitter.",
+        "type": "harmless"
+    },
+    {
+        "_id": 179,
+        "prompt": "Rewrite the following paragraph to make it more engaging and compelling:\nThe growth of technology in recent years has impacted various industries. One of them is the healthcare industry. Technological advancements have been enabling healthcare providers to offer better treatments and improve patient care. Some of the benefits of utilizing technology in healthcare include reduced medical errors, quicker diagnoses, and remote monitoring.",
+        "type": "harmless"
+    },
+    {
+        "_id": 180,
+        "prompt": "Write a list of five healthy meal options.",
+        "type": "harmless"
+    },
+    {
+        "_id": 181,
+        "prompt": "Provide three possible solution to the following problem:\nHow to reduce plastic waste?",
+        "type": "harmless"
+    },
+    {
+        "_id": 182,
+        "prompt": "Generate a list of four questions related to marketing strategy.",
+        "type": "harmless"
+    },
+    {
+        "_id": 183,
+        "prompt": "Find a title for a book discussing environment protection.",
+        "type": "harmless"
+    },
+    {
+        "_id": 184,
+        "prompt": "Translate the following sentence into Spanish. \n\n\"Life is a journey, not a destination.\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 185,
+        "prompt": "Categorize the following object as either a mammal, reptile, or amphibian:\nFrog",
+        "type": "harmless"
+    },
+    {
+        "_id": 186,
+        "prompt": "Categorize the following items into vegetables and fruits:\nOrange, Carrots, Onion, Bananas",
+        "type": "harmless"
+    },
+    {
+        "_id": 187,
+        "prompt": "Summarize the sentence using 6 words or less:\nElectric vehicles are better for the environment because they do not produce any harmful emissions.",
+        "type": "harmless"
+    },
+    {
+        "_id": 188,
+        "prompt": "Who wrote the song \"Yesterday\"?",
+        "type": "harmless"
+    },
+    {
+        "_id": 189,
+        "prompt": "Give three examples of customer feedback from your customer service experience.",
+        "type": "harmless"
+    },
+    {
+        "_id": 190,
+        "prompt": "If I am starting a business, what are the key factors I need to consider?",
+        "type": "harmless"
+    },
+    {
+        "_id": 191,
+        "prompt": "Generate a non-rhyming poem of 4 lines.",
+        "type": "harmless"
+    },
+    {
+        "_id": 192,
+        "prompt": "In what year was the Taj Mahal built?",
+        "type": "harmless"
+    },
+    {
+        "_id": 193,
+        "prompt": "Explain how to differentiate between a butterfly and a moth.",
+        "type": "harmless"
+    },
+    {
+        "_id": 194,
+        "prompt": "Name three benefits of remote working?",
+        "type": "harmless"
+    },
+    {
+        "_id": 195,
+        "prompt": "Pick any color from the rainbow.",
+        "type": "harmless"
+    },
+    {
+        "_id": 196,
+        "prompt": "Rewrite the following sentence by replacing the word \"improved\" with a synonmym:\nThe manager improved the workflow process.",
+        "type": "harmless"
+    },
+    {
+        "_id": 197,
+        "prompt": "Should I use verb or verb + ing in the following case:\n> Marla glanced at her watch. Half past four. She'd been in the subway since morning, doing nothing in particular\u2014just watch(ing) trains come and go, people getting on and off. A typical commuting scene.",
+        "type": "harmless"
+    },
+    {
+        "_id": 198,
+        "prompt": "Compute 12960000^(1/4).",
+        "type": "harmless"
+    },
+    {
+        "_id": 199,
+        "prompt": "Describe what the hidden world that John discovered looked like.",
+        "type": "harmless"
+    },
+    {
+        "_id": 200,
+        "prompt": "Given two different pieces of information, explain the differences:\nEcosystems and Biomes",
+        "type": "harmless"
+    },
+    {
+        "_id": 201,
+        "prompt": "Given a list of four CEOs, choose the one who had the most successful tenure:\nMark Zuckerberg, Bill Gates, Elon Musk, Jeff Bezos",
+        "type": "harmless"
+    },
+    {
+        "_id": 202,
+        "prompt": "Predict what effects the COVID-19 pandemic may have on the future of work.",
+        "type": "harmless"
+    },
+    {
+        "_id": 203,
+        "prompt": "Given some code and output, explain the syntax and meaning of each line:\na = 2\nb = 3\nprint(a * b)",
+        "type": "harmless"
+    },
+    {
+        "_id": 204,
+        "prompt": "Choose the correct form of the verb from the choices given:\nHe (is, are) the team's captain.",
+        "type": "harmless"
+    },
+    {
+        "_id": 205,
+        "prompt": "Change the font size of the text to 17px.",
+        "type": "harmless"
+    },
+    {
+        "_id": 206,
+        "prompt": "Describe how to respond to a customer with a complaint.",
+        "type": "harmless"
+    },
+    {
+        "_id": 207,
+        "prompt": "Describe three potential negative effects of technology overuse.",
+        "type": "harmless"
+    },
+    {
+        "_id": 208,
+        "prompt": "Explain the ethical dilemma in this situation:\nAn insurance company promises low-cost health care coverage to its customers, but, upon examining the details of the policy, many customers find that they are not actually covered for life-saving procedures.",
+        "type": "harmless"
+    },
+    {
+        "_id": 209,
+        "prompt": "Summarize this passage in one sentence:\nCuisine in Singapore is highly diverse, with Chinese, Indian, Malaysian, and Indonesian influences. Local dishes have been adapted to include ingredients from all cultures of the country, resulting in a unique style of cooking.",
+        "type": "harmless"
+    },
+    {
+        "_id": 210,
+        "prompt": "Design an algorithm to compare the words in two strings and determine the similarity between them:\nString 1: \"backpack fabric\"\nString 2: \"fabric pack\"",
+        "type": "harmless"
+    },
+    {
+        "_id": 211,
+        "prompt": "Paraphrase this sentence by reusing some of the words:\nWe must stand up and fight.",
+        "type": "harmless"
+    },
+    {
+        "_id": 212,
+        "prompt": "Describe how the color red looks.",
+        "type": "harmless"
+    },
+    {
+        "_id": 213,
+        "prompt": "Find all adjectives in the following sentence: The red elephant was frolicking in the pond.",
+        "type": "harmless"
+    },
+    {
+        "_id": 214,
+        "prompt": "Calculate the roots of the equation x**2 - 4x + 3 = 0.",
+        "type": "harmless"
+    },
+    {
+        "_id": 215,
+        "prompt": "Describe the effects of a four year economic recession on a small business.",
+        "type": "harmless"
+    },
+    {
+        "_id": 216,
+        "prompt": "Create a list of 5 common myths about Artificial Intelligence.",
+        "type": "harmless"
+    },
+    {
+        "_id": 217,
+        "prompt": "Name four major components of the water cycle.",
+        "type": "harmless"
+    },
+    {
+        "_id": 218,
+        "prompt": "Describe what autumn is like in New York.",
+        "type": "harmless"
+    },
+    {
+        "_id": 219,
+        "prompt": "Generate some topics related to finance.",
+        "type": "harmless"
+    },
+    {
+        "_id": 220,
+        "prompt": "Generate a unique podcast title.",
+        "type": "harmless"
+    },
+    {
+        "_id": 221,
+        "prompt": "Describe the character \"Moth\" from the book 'Les Mis\u00e9rables'.",
+        "type": "harmless"
+    },
+    {
+        "_id": 222,
+        "prompt": "Determine what to do if you are threatened online.",
+        "type": "harmless"
+    },
+    {
+        "_id": 223,
+        "prompt": "Summarize the information in this table:\n| Country | Population |\n|:-----------:|-----------------:|\n| India | 1.37 billion |\n| China  | 1.34 billion |\n| US | 330 million |",
+        "type": "harmless"
+    },
+    {
+        "_id": 224,
+        "prompt": "Greet someone on their birthday.",
+        "type": "harmless"
+    },
+    {
+        "_id": 225,
+        "prompt": "Give a solution to an ethical issue:\nAdvertising to children.",
+        "type": "harmless"
+    },
+    {
+        "_id": 226,
+        "prompt": "Generate a list of drive-in activities.",
+        "type": "harmless"
+    },
+    {
+        "_id": 227,
+        "prompt": "Given the following sentence, identify and output the adverb in it:\nHe played the piano beautifully.",
+        "type": "harmless"
+    },
+    {
+        "_id": 228,
+        "prompt": "Write the HTML code to create a button that links to a certain page:\nLink to page: https://example.com\nText on button: Click Here",
+        "type": "harmless"
+    },
+    {
+        "_id": 229,
+        "prompt": "Create a list of ways to improve memory.",
+        "type": "harmless"
+    },
+    {
+        "_id": 230,
+        "prompt": "Design a modern version of Cinderella's glass slipper.",
+        "type": "harmless"
+    },
+    {
+        "_id": 231,
+        "prompt": "What strategies can organizations use to reduce waste?",
+        "type": "harmless"
+    },
+    {
+        "_id": 232,
+        "prompt": "Develop a list of five tips for writing a successful resume.",
+        "type": "harmless"
+    },
+    {
+        "_id": 233,
+        "prompt": "Provide an overview of blockchain technology.",
+        "type": "harmless"
+    },
+    {
+        "_id": 234,
+        "prompt": "What is x if 5 - x = 2?",
+        "type": "harmless"
+    },
+    {
+        "_id": 235,
+        "prompt": "List four reasons why a person should consider starting a business.",
+        "type": "harmless"
+    },
+    {
+        "_id": 236,
+        "prompt": "Separate the text into individual words:\nThisIsDistracting",
+        "type": "harmless"
+    },
+    {
+        "_id": 237,
+        "prompt": "Describe an alien species.",
+        "type": "harmless"
+    },
+    {
+        "_id": 238,
+        "prompt": "Describe a typical day at school for a college student.",
+        "type": "harmless"
+    },
+    {
+        "_id": 239,
+        "prompt": "Generate a list of reasons why someone might procrastinate.",
+        "type": "harmless"
+    },
+    {
+        "_id": 240,
+        "prompt": "Generate a unique introduction to a speech about computer vision.",
+        "type": "harmless"
+    },
+    {
+        "_id": 241,
+        "prompt": "Generate a creative story about a princess and a dragon.",
+        "type": "harmless"
+    },
+    {
+        "_id": 242,
+        "prompt": "What is the history of the Atlantic slave trade?",
+        "type": "harmless"
+    },
+    {
+        "_id": 243,
+        "prompt": "Rank the following items from smallest to largest. Output the sequence of numbers without spaces:\n60, 0.004, -12, 0.03",
+        "type": "harmless"
+    },
+    {
+        "_id": 244,
+        "prompt": "Outline a step-by-step guide to make pancakes.",
+        "type": "harmless"
+    },
+    {
+        "_id": 245,
+        "prompt": "Develop an argument supporting a point:\nThe importance of physical education in schools",
+        "type": "harmless"
+    },
+    {
+        "_id": 246,
+        "prompt": "Given an everyday situation, create a brief story around it:\nRiding the subway",
+        "type": "harmless"
+    },
+    {
+        "_id": 247,
+        "prompt": "Recommend a good beginner yoga class.",
+        "type": "harmless"
+    },
+    {
+        "_id": 248,
+        "prompt": "Describe the importance of data curation in the data science field.",
+        "type": "harmless"
+    },
+    {
+        "_id": 249,
+        "prompt": "Convert the following number from its fractional representation to the equivalent percentage:\n37\u2044100",
+        "type": "harmless"
+    },
+    {
+        "_id": 250,
+        "prompt": "Find the third word in the sentence and make it the title of a book:\nThe lively red dog is chasing a cat",
+        "type": "harmless"
+    },
+    {
+        "_id": 251,
+        "prompt": "Classify the following snippet of text into one of the following categories: fiction, sport, science:\nShe leaned down and planted a kiss on his forehead.",
+        "type": "harmless"
+    },
+    {
+        "_id": 252,
+        "prompt": "I want to explore a cave near my town. What should I bring with me?",
+        "type": "harmless"
+    },
+    {
+        "_id": 253,
+        "prompt": "Generate a slogan for a healthy meal delivery service.",
+        "type": "harmless"
+    },
+    {
+        "_id": 254,
+        "prompt": "Suggest a random activity that can be done outdoors.",
+        "type": "harmless"
+    },
+    {
+        "_id": 255,
+        "prompt": "Rewrite the following sentence without changing the meaning:\nThe sales report was not accurate.",
+        "type": "harmless"
+    },
+    {
+        "_id": 256,
+        "prompt": "From the facts, construct a multiple-choice quiz:\nFact: The longest river in the world is the Nile River.",
+        "type": "harmless"
+    },
+    {
+        "_id": 257,
+        "prompt": "Read this short passage and identify the main idea:\nThe train generally leaves the station at 8 am each morning, but recently it has been leaving at 8:15 am due to mechanical issues.",
+        "type": "harmless"
+    },
+    {
+        "_id": 258,
+        "prompt": "Why is Python a good language for data science?",
+        "type": "harmless"
+    },
+    {
+        "_id": 259,
+        "prompt": "Explain what a 3-dimensional coordinate system is.",
+        "type": "harmless"
+    },
+    {
+        "_id": 260,
+        "prompt": "Translate the following sentence into Chinese: \"It is raining outside\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 261,
+        "prompt": "Suggest a response for this customer's feedback:\nI'm disappointed with the product.",
+        "type": "harmless"
+    },
+    {
+        "_id": 262,
+        "prompt": "Analyze the given sentence to identify any existing gender biases:\nHe works hard and always keeps his promises.",
+        "type": "harmless"
+    },
+    {
+        "_id": 263,
+        "prompt": "Summarize the novel 'The Great Gatsby'.",
+        "type": "harmless"
+    },
+    {
+        "_id": 264,
+        "prompt": "Create a game given two characters, a challenge and a reward:\nCharacters: A wizard and a knight\nChallenge: Cross a treacherous canyon\nReward: A magical amulet",
+        "type": "harmless"
+    },
+    {
+        "_id": 265,
+        "prompt": "Given an emotion, come up with a creative way to show it with body language:\nHappiness",
+        "type": "harmless"
+    },
+    {
+        "_id": 266,
+        "prompt": "Explain how waves move.",
+        "type": "harmless"
+    },
+    {
+        "_id": 267,
+        "prompt": "Edit the following text to make the meaning clearer.\n\"The government should have done more to prevent the pandemic to avoid the economic crisis\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 268,
+        "prompt": "Calculate the area of a right triangle given the base and height:\nBase = 5\nHeight = 4",
+        "type": "harmless"
+    },
+    {
+        "_id": 269,
+        "prompt": "Provide an analogy to explain the atomic structure.",
+        "type": "harmless"
+    },
+    {
+        "_id": 270,
+        "prompt": "In this task, you have to supply an appropriate word in the given sentence according to the context:\nThe sun was _____ bright.",
+        "type": "harmless"
+    },
+    {
+        "_id": 271,
+        "prompt": "What is the chemical formula of Ascorbic Acid?",
+        "type": "harmless"
+    },
+    {
+        "_id": 272,
+        "prompt": "Discuss two ways this economic system is different from capitalism.",
+        "type": "harmless"
+    },
+    {
+        "_id": 273,
+        "prompt": "Write the full name for the following acronym: CIA.",
+        "type": "harmless"
+    },
+    {
+        "_id": 274,
+        "prompt": "Explain the term 'convolutional neural networks'.",
+        "type": "harmless"
+    },
+    {
+        "_id": 275,
+        "prompt": "Create a script between two characters:\nCharacter 1: An entrepreneur\nCharacter 2: A venture capitalist",
+        "type": "harmless"
+    },
+    {
+        "_id": 276,
+        "prompt": "How would you greet someone in a formal way?",
+        "type": "harmless"
+    },
+    {
+        "_id": 277,
+        "prompt": "Generate three realistic locations for a treasure hunt.",
+        "type": "harmless"
+    },
+    {
+        "_id": 278,
+        "prompt": "Generate a list of possible causes for the following phenomenon:\nEconomic stagnation",
+        "type": "harmless"
+    },
+    {
+        "_id": 279,
+        "prompt": "Explain what animal rights are.",
+        "type": "harmless"
+    },
+    {
+        "_id": 280,
+        "prompt": "Solve the following equation and explain the steps used to find the answer:\n2x + 5 = 11",
+        "type": "harmless"
+    },
+    {
+        "_id": 281,
+        "prompt": "Re-phrase this statement to make it sound more friendly and inviting:\nYou are expected to abide by the regulations of this lab.",
+        "type": "harmless"
+    },
+    {
+        "_id": 282,
+        "prompt": "Devise a way to making a paper clip without using scissors.",
+        "type": "harmless"
+    },
+    {
+        "_id": 283,
+        "prompt": "Create a title for an article on the gender pay gap.",
+        "type": "harmless"
+    },
+    {
+        "_id": 284,
+        "prompt": "Given a programming language, explain the syntax for a function:\nPython",
+        "type": "harmless"
+    },
+    {
+        "_id": 285,
+        "prompt": "Explain what a simile is and give an example of one.",
+        "type": "harmless"
+    },
+    {
+        "_id": 286,
+        "prompt": "Give three tips on how to write effective emails.",
+        "type": "harmless"
+    },
+    {
+        "_id": 287,
+        "prompt": "Come up with a slogan for a company that specializes in travel services.",
+        "type": "harmless"
+    },
+    {
+        "_id": 288,
+        "prompt": "Describe what the color blue evokes in people.",
+        "type": "harmless"
+    },
+    {
+        "_id": 289,
+        "prompt": "Explain what the following machine learning algorithm does:\nK-Means Clustering",
+        "type": "harmless"
+    },
+    {
+        "_id": 290,
+        "prompt": "Explain the important role of databases for businesses.",
+        "type": "harmless"
+    },
+    {
+        "_id": 291,
+        "prompt": "Write a story about a robot who has to complete a difficult task.",
+        "type": "harmless"
+    },
+    {
+        "_id": 292,
+        "prompt": "Generate a haiku poem.",
+        "type": "harmless"
+    },
+    {
+        "_id": 293,
+        "prompt": "Write a short story with the following prompt: A grandmother and her grandchild taking a walk in the park.",
+        "type": "harmless"
+    },
+    {
+        "_id": 294,
+        "prompt": "Create a plan of attack for a chess game.",
+        "type": "harmless"
+    },
+    {
+        "_id": 295,
+        "prompt": "Explain why this policy was introduced:\nThe single-use plastic reduction policy in the UK",
+        "type": "harmless"
+    },
+    {
+        "_id": 296,
+        "prompt": "Design a logo for a new caf\u00e9 called \u201cThe Perk\".",
+        "type": "harmless"
+    },
+    {
+        "_id": 297,
+        "prompt": "Develop a game using Python.",
+        "type": "harmless"
+    },
+    {
+        "_id": 298,
+        "prompt": "Calculate 8 minus 6 in the base two system.",
+        "type": "harmless"
+    },
+    {
+        "_id": 299,
+        "prompt": "List the stages of a customer journey.",
+        "type": "harmless"
+    }
+]
