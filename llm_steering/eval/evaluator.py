@@ -14,8 +14,6 @@ from ..steering.intervention import get_intervention_func
 from ..data.prompt_iterator import PromptIterator
 from .task import Task, load_task
 
-deepseek_generation_config = {"do_sample": True, "temperature": 0.6, "top_p": 0.95, "max_new_tokens": 2048}
-
 
 def parse_reasoning_output(completion):
     if "</think>" in completion:
@@ -65,21 +63,6 @@ class Evaluator():
 
         return chunks(all_completions, self.cfg.num_return_sequences)
     
-    def run_reasoning(self, prompts: List[str], layer: int = None, intervene_func: Callable = None) -> List[str]:
-        prompt_iterator = PromptIterator(prompts, batch_size=self.batch_size, desc=f"Generating completions")
-        all_completions = []
-
-        for prompt_batch in prompt_iterator:
-            completions = self.model.generate(
-                prompt_batch, layer, intervene_func=intervene_func, 
-                max_new_tokens=deepseek_generation_config['max_new_tokens'], do_sample=True, 
-                num_return_sequences=1, top_p=deepseek_generation_config['max_new_tokens'],
-                temperature=deepseek_generation_config['temperature']
-            )
-            all_completions.extend(completions)
-
-        return all_completions
-    
     def get_next_token_probs(self, prompts: List[str], token_ids: List[int], layer: int = None, intervene_func: Callable = None):
         prompt_iterator = PromptIterator(prompts, batch_size=self.batch_size, desc="Getting answer probabilty")
         
@@ -115,14 +98,25 @@ class Evaluator():
         np.save(filepath, np.array(projs))
         print(f"Projections saved to: {filepath}")
     
-    def save_completions(self, data: List[Dict], outputs: Iterator[List[str]], filepath: str):
+    def save_completions(self, data: List[Dict], outputs: Iterator[List[str]], filepath: str, is_reasoning: bool=False):
         results = []
         for x, output in zip(data, outputs):
-            results.append({
-                "_id": x["_id"],
-                "prompt": x["prompt"],
-                "completions": output
-            })
+
+            if is_reasoning:
+                reasoning, answer = parse_reasoning_output(output)
+                results.append({
+                    "_id": x["_id"],
+                    "prompt": x["prompt"],
+                    "reasoning": reasoning,
+                    "answer": answer
+                })
+
+            else:
+                results.append({
+                    "_id": x["_id"],
+                    "prompt": x["prompt"],
+                    "completions": output
+                })
 
         save_to_json_file(results, filepath)
 
@@ -136,22 +130,10 @@ class Evaluator():
             })
 
         save_to_json_file(results, filepath)
-
-    def save_reasoning(self, data: List[Dict], outputs: Iterator[List[str]], filepath: str):
-        results = []
-        for x, output in zip(data, outputs):
-            reasoning, answer = parse_reasoning_output(output)
-            results.append({
-                "_id": x["_id"],
-                "prompt": x["prompt"],
-                "reasoning": reasoning,
-                "answer": answer
-            })
-
-        save_to_json_file(results, filepath)
       
     def run(
-        self, task: Task, coeff: float = 0, k: float = 0, baseline: bool = False, use_cache: bool = False, 
+        self, task: Task, coeff: float = 0, k: float = 0, 
+        baseline: bool = False, use_cache: bool = False, 
         get_next_token_prob: bool = False, is_reasoning: bool = False, 
     ):
 
@@ -168,14 +150,10 @@ class Evaluator():
         data = task.prepare_inputs(self.model.apply_chat_template)
         prompts = [x["formatted_prompt"] for x in data]
 
-        if is_reasoning:
-            steering_outputs = self.run_reasoning(prompts, layer=self.cfg.layer, intervene_func=intervene_func)
-            self.save_reasoning(data, steering_outputs, save_filepath)
-
-        elif get_next_token_prob:
+        if get_next_token_prob:
             token_ids = [self.model.tokenizer.encode(token, add_special_tokens=False)[0] for token in ['\n\n', '\n']]
             steering_outputs = self.get_next_token_probs(prompts, token_ids=token_ids, layer=self.cfg.layer, intervene_func=intervene_func)
-            self.save_outputs(data, steering_outputs, save_filepath)
+            self.save_outputs(data, steering_outputs, save_filepath, is_reasoning)
 
         else:
             steering_outputs = self.generate_completions(prompts, layer=self.cfg.layer, intervene_func=intervene_func)

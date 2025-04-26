@@ -60,7 +60,6 @@ def evaluate_candidate_vectors(
     
     max_layer = round(model.n_layer * (1 - filter_layer_pct)) - 1
     filtered_results = [x for x in results if x["layer"] < max_layer] # Filter layers close to the last layer
-    # top_layer_results = sorted(filtered_results, key=lambda x: x["RMSE"]) # Sort layers by RMSE
     top_layer_results = sorted(filtered_results, key=lambda x: (x["corr"]-x["RMSE"]), reverse=True) # Sort layers by RMSE & correlation
 
     return top_layer_results
@@ -113,31 +112,32 @@ def validate(
     logging.info(f"Top layers: {[x['layer'] for x in top_layer_results]}")
     save_to_json_file(top_layer_results, save_dir / "top_layers.json")
 
-    # prompts = val_data.sample(n=cfg.steering_test_size).prompt.tolist()
-    # formatted_prompts = model.apply_chat_template(prompts)
+    # Run steering test on a few examples
+    prompts = val_data.sample(n=cfg.steering_test_size).prompt.tolist()
+    formatted_prompts = model.apply_chat_template(prompts)
 
-    # layer = top_layer_results[0]["layer"]
-    # steering_vec = candidate_vectors[layer]
-    # offset = offsets[layer]
-    # steering_vec, offset = model.set_dtype(steering_vec, offset)
+    layer = top_layer_results[0]["layer"]
+    steering_vec = candidate_vectors[layer]
+    offset = offsets[layer]
+    steering_vec, offset = model.set_dtype(steering_vec, offset)
 
-    # for coeff in loop_coeffs(min_coeff, max_coeff, increment):
-    #     logging.info(f"Steering test: coeff={coeff:.1f}")
-    #     intervene_func = get_intervention_func(steering_vec, offset=offset, coeff=coeff)
+    for coeff in loop_coeffs(min_coeff, max_coeff, increment):
+        logging.info(f"Steering test: coeff={coeff:.1f}")
+        intervene_func = get_intervention_func(steering_vec, offset=offset, coeff=coeff)
 
-    #     outputs = run_steering_test(
-    #         model, formatted_prompts, layer=layer, 
-    #         intervene_func=intervene_func, batch_size=cfg.generation_batch_size,
-    #         max_new_tokens=max_new_tokens, do_sample=do_sample, 
-    #         num_return_sequences=num_return_sequences, top_p=top_p
-    #     )
+        outputs = run_steering_test(
+            model, formatted_prompts, layer=layer, 
+            intervene_func=intervene_func, batch_size=cfg.generation_batch_size,
+            max_new_tokens=max_new_tokens, do_sample=do_sample, 
+            num_return_sequences=num_return_sequences, top_p=top_p
+        )
 
-    #     results = []
-    #     for p, completions in zip(prompts, outputs):
-    #         results.append({
-    #             "prompt": p,
-    #             "completions": completions
-    #         })
+        results = []
+        for p, completions in zip(prompts, outputs):
+            results.append({
+                "prompt": p,
+                "completions": completions
+            })
 
-    #     save_to_json_file(results, save_dir / f"steering_outputs_coeff={coeff}.json")
+        save_to_json_file(results, save_dir / f"steering_outputs_coeff={coeff}.json")
         

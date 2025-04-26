@@ -28,12 +28,10 @@ def parse_arguments():
     parser.add_argument('--model_name', type=str, help='Model name.')
     parser.add_argument('--config_file', type=str, default=None, help='Load configuration from file.')
     parser.add_argument('--task', type=str, required=True, choices=["censorship", "refusal"], help='Target task.')
-    parser.add_argument('--method', type=str, default="WMD", choices=["WMD", "MD"], help='Method for computing candidate vectors.')
-    parser.add_argument('--use_offset', action='store_true', help='Offset by neutral examples.')
     parser.add_argument('--n_train', type=int, default=1200, help="Number of training examples.")
     parser.add_argument('--n_val', type=int, default=600, help="Number of validation examples.")
     parser.add_argument('--steering_test_size', type=int, default=10, help="Number of examples for steering test.")
-    parser.add_argument('--prob_threshold', type=float, default=0.1)
+    parser.add_argument('--threshold', type=float, default=0.1, help="Threshold score for positive/negative examples.")
     parser.add_argument('--filter_layer_pct', type=float, default=0.2, help='Filter last N percentage layers.')
     parser.add_argument('--batch_size', type=int, default=32, help='Batch size.')
     parser.add_argument('--generation_batch_size', type=int, default=8, help='Batch size for text generation.')
@@ -91,13 +89,10 @@ def train_and_validate(cfg: Config, data_cfg: DataConfig, model: ModelBase):
 
     if not cfg.use_cache or not Path(cfg.artifact_path() / "activations/candidate_vectors.pt").is_file():
         train_data = datasets["train"]
-        pos_examples = train_data[train_data.prob_diff > data_cfg.prob_threshold]
-        neg_examples = train_data[train_data.prob_diff < -data_cfg.prob_threshold]
+        pos_examples = train_data[train_data.prob_diff > data_cfg.threshold]
+        neg_examples = train_data[train_data.prob_diff < -data_cfg.threshold]
 
-        if cfg.use_offset:
-            neutral_examples = train_data[train_data.prob_diff.abs() <= data_cfg.prob_threshold]
-        else:
-            neutral_examples = None
+        neutral_examples = train_data[train_data.prob_diff.abs() <= data_cfg.threshold]
 
         extract_candidate_vectors(cfg, model, pos_examples, neg_examples, neutral_examples)
 
@@ -114,13 +109,14 @@ def main():
         data_cfg = DataConfig(
             task=args.task,
             n_train=args.n_train, n_val=args.n_val,
-            prob_threshold=args.prob_threshold, 
+            hreshold=args.threshold, 
             max_new_tokens=args.max_new_tokens, top_p=args.top_p,
             num_return_sequences=args.num_return_sequences
         )
         cfg = Config(
-            model_name=args.model_name, data_cfg=data_cfg, 
-            method=args.method, use_offset=args.use_offset, seed=args.seed, 
+            model_name=args.model_name, 
+            data_cfg=data_cfg, 
+            seed=args.seed, 
             filter_layer_pct=args.filter_layer_pct, 
             steering_test_size=args.steering_test_size,
             save_dir=args.save_dir, batch_size=args.batch_size, 

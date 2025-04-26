@@ -7,11 +7,9 @@ from ..config import DataConfig
 
 DATA_DIR = Path(__file__).resolve().parent
 EVAL_DATASETS = [
-    "jailbreakbench", "sorrybench", "alpaca_test_sampled", "xstest_safe", "xstest_unsafe", 
-    "ccp_sensitive", "ccp_sensitive_sampled", "censorship_test", "deccp_sampled"
+    "jailbreakbench", "sorrybench", "xstest_safe", "xstest_unsafe", "alpaca_test_sampled", 
+    "ccp_sensitive", "ccp_sensitive_sampled", "deccp_censored"
 ]
-
-
 
 def load_dataframe_from_json(filepath):
     data = json.load(open(filepath, "r"))

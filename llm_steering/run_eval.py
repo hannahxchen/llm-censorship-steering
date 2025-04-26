@@ -1,6 +1,7 @@
 import os, warnings
 import json, argparse
 import logging, random
+from typing import List
 from pathlib import Path
 import torch
 import numpy as np
@@ -16,22 +17,18 @@ warnings.filterwarnings("ignore")
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 logging.basicConfig(level=logging.INFO)
 
-deepseek_generation_config = {"do_sample": True, "temperature": 0.6, "top_p": 0.95, "max_new_tokens": 2048}
-
-
-SAFETY_TASKS =["jailbreakbench", "xstest_unsafe", "sorrybench"]
-HARMLESS_TASKS = ["alpaca_test_sampled", "xstest_safe"]
-SENSITIVE_TASKS = ["ccp_sensitive_sampled"]
-CENSORSHIP_TASKS = ["ccp_sensitive", 'jailbreakbench', 'sorrybench', 'alpaca_test_sampled']
+deepseek_generation_config = {
+    "do_sample": True, "temperature": 0.6, "top_p": 0.95, "max_new_tokens": 2048
+}
 
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
     
-    parser.add_argument('--config_file', type=str, default=None, help='Load configuration from file.')
+    parser.add_argument('--config_file', type=str, required=True, help='Load configuration from file.')
     parser.add_argument('--run_wildguard', action='store_true', help='Run WildGuard evaluation.')
     parser.add_argument('--layer', type=int, help="Steering layer.")
-    parser.add_argument('--task_type', type=str, choices=['harmful', 'harmless', 'all', 'sensitive', 'censorship'], default='all', help='Task type.')
+    parser.add_argument('--datasets', type=str, nargs='+', required=True, help='List of datasets.')
     parser.add_argument('--max_new_tokens', type=int, default=256, help='Maximum number of generated tokens.')
     parser.add_argument('--top_p', type=float, default=0.8, help='Top p value for sampling.')
     parser.add_argument('--num_return_sequences', type=int, default=5, help='Number of generated sequences per input.')
@@ -39,7 +36,8 @@ def parse_arguments():
     parser.add_argument('--max_coeff', type=float, default=1, help="Maximum steering coefficient.")
     parser.add_argument('--increment', type=float, default=0.2, help="Increment of steering coefficient.")
     parser.add_argument('--coeff', type=float, default=None, help="Steering coefficient.")
-    parser.add_argument('--batch_size', type=int, default=32, help='Batch size.')
+    parser.add_argument('--batch_size', type=int, default=8, help='Batch size.')
+    parser.add_argument('--reasoning', action='store_true', help='Reasoning model.')
     parser.add_argument('--use_cache', action='store_true', help='Reuse stored cached results.')
     parser.add_argument('--seed', type=int, default=3456, help='Random seed.')
 
@@ -51,9 +49,9 @@ def get_projection_percentile(projections, pct=10, decimals=1):
 
 
 def run_eval(
-    eval_cfg: EvalConfig, model: ModelBase, artifact_path: Path, batch_size: int, use_cache: bool = True,
-    task_list=["jailbreakbench", "sorrybench", "alpaca_test_sampled", "xstest_safe", "xstest_unsafe"], 
-    get_next_token_prob: bool = False, compute_projection: bool = False, run_reasoning: bool = False
+    eval_cfg: EvalConfig, model: ModelBase, artifact_path: Path, 
+    task_list: List[str], batch_size: int, use_cache: bool = False, 
+    reasoning: bool = False
 ):
     steering_vec = torch.load(artifact_path / "activations/candidate_vectors.pt", weights_only=True)[eval_cfg.layer]
     offset = torch.load(artifact_path / "activations/offsets.pt", weights_only=True)[eval_cfg.layer]
@@ -78,10 +76,11 @@ def run_eval(
         logging.info(f"Running task: {task_name}")
         task = evaluator.load_task(task_name)
 
-        if compute_projection:
-            evaluator.compute_projections(task, layer=eval_cfg.layer, use_cache=use_cache)
+        # Compute projections
+        # evaluator.compute_projections(task, layer=eval_cfg.layer, use_cache=use_cache)
 
-        evaluator.run(task, baseline=True, use_cache=use_cache, get_next_token_prob=get_next_token_prob, is_reasoning=run_reasoning)
+        # Run baseline with no steering
+        evaluator.run(task, baseline=True, use_cache=use_cache, is_reasoning=reasoning)
 
         for coeff in coeff_list:
             logging.info(f"Steering coefficient={coeff:.1f}")
@@ -92,7 +91,9 @@ def run_eval(
             else:
                 k = 0
 
-            evaluator.run(task, coeff=coeff, k=k, baseline=False, use_cache=use_cache, get_next_token_prob=get_next_token_prob, is_reasoning=run_reasoning)
+            evaluator.run(
+                task, coeff=coeff, k=k, baseline=False, use_cache=use_cache, is_reasoning=reasoning
+            )
 
             clear_torch_cache()
 
@@ -194,41 +195,27 @@ def main():
         random.seed(cfg.seed)
         np.random.seed(cfg.seed)
         model = load_model(cfg.model_name)
-        args.layer = json.load(open(cfg.artifact_path() / "validation/top_layers.json", "r"))[0]['layer']
+
+        if args.layer is None: # Use top layer
+            args.layer = json.load(open(cfg.artifact_path() / "validation/top_layers.json", "r"))[0]['layer']
 
         eval_cfg = EvalConfig(
-            layer=args.layer, coeff=args.coeff,
-            min_coeff=args.min_coeff, max_coeff=args.max_coeff, 
+            layer=args.layer, 
+            coeff=args.coeff,
+            min_coeff=args.min_coeff, 
+            max_coeff=args.max_coeff, 
             increment=args.increment,
             max_new_tokens=args.max_new_tokens, 
             num_return_sequences=args.num_return_sequences, 
             top_p=args.top_p, do_sample=True
         )
 
-        if args.task_type == "harmless":
-            task_list = HARMLESS_TASKS
-        elif args.task_type == "sensitive":
-            task_list = SENSITIVE_TASKS
-        elif args.task_type == "all":
-            task_list = SAFETY_TASKS + HARMLESS_TASKS
-        elif args.task_type == "censorship":
-            task_list = CENSORSHIP_TASKS
-        else:
-            task_list = SAFETY_TASKS
-        
-
-        if "DeepSeek-R1" in cfg.model_name:
-            get_next_token_prob = True
-            # run_reasoning = True
-        else:
-            get_next_token_prob = False
-            # run_reasoning = False
-
         run_eval(
-            eval_cfg, model, cfg.artifact_path(), batch_size=args.batch_size, use_cache=args.use_cache, 
-            task_list=task_list, 
-            # run_reasoning=run_reasoning,
-            get_next_token_prob=get_next_token_prob, 
+            eval_cfg, model, cfg.artifact_path(), 
+            batch_size=args.batch_size, 
+            use_cache=args.use_cache, 
+            task_list=args.datasets, 
+            reasoning=args.reasoning
         )
 
 
