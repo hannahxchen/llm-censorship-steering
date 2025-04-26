@@ -1,16 +1,17 @@
+
+
 # LLM Censorship Steering
 
-<center>
-    <img src="assets/cover-photo.png" style="max-width: 600px;">
-</center>
-<br>
+<div align="center">
+    <img src="assets/cover-photo.png" width="80%">
+</div>
 
 This repository contains code implementation for [*Steering the CensorShip: Uncovering Representation Vectors for LLM "Thought" Control*](https://arxiv.org/abs/2504.17130) by Hannah Cyberey and David Evans.
 
 We introduce a method that finds "steering vectors" from LLM internals for detecting and controlling the level of censorship in model outputs. Check out this [blogpost]() for a brief overview of our work.
 Try out our demos:
-- 🐳 [Steering *Thought Suppression* in DeepSeek-R1-Distill-Qwen-7B]( https://mightbeevil.com/censorship)
-- 🦙 [Steering *Refusal—Compliance* in Llama-2-7B-Chat](https://hannahcyberey-refusal-censorship-steering.hf.space/)
+- 🐳 [Steering *Thought Suppression*]( https://mightbeevil.com/censorship) with DeepSeek-R1-Distill-Qwen-7B
+- 🦙 [Steering *Refusal—Compliance*](https://hannahcyberey-refusal-censorship-steering.hf.space/) with Llama-3.1-8B-Instruct 
 
 > **NOTE:** The second demo requires a Huggingface account. It's hosted with Huggingface's [ZeroGPU](https://huggingface.co/docs/hub/en/spaces-zerogpu), which is free to all users with limited daily usage quota.
 
@@ -114,13 +115,17 @@ To evaluate the generated outputs with *WildGuard*, run:
 ```bash
 python -m llm_steering.run_eval \
     --config_file CONFIG_FILE_PATH \
-    --batch_size BATCH_SIZE
-    --run_wildguard \
+    --batch_size BATCH_SIZE \
+    --run_wildguard
 ```
+
 [WildGuard](https://huggingface.co/allenai/wildguard) provides three types of detection and produces outputs in the following format:
-> Harmful request: yes
-> Response refusal: yes
-> Harmful response: no
+
+```
+Harmful request: yes
+Response refusal: yes
+Harmful response: no
+```
 
 We extract the probability of the "yes" or "no" token for each type of detection. The results will be added to the same file as the generated outputs.
 
