@@ -1,25 +1,11 @@
-import logging, json, gc
+import gc, json
+import logging
+from tqdm import tqdm
 from pathlib import Path
-from typing import List, Dict, Iterator
 from functools import singledispatch
+from typing import List, Dict, Iterator, Tuple, Iterable, Union
 import numpy as np
 import torch
-import torch.nn.functional as F
-
-
-def RMS(x):
-    if not isinstance(x, np.ndarray):
-        x = np.array(x)
-    return np.sqrt(np.mean(x ** 2)).item()
-
-
-def RMSE(proj_ratios: np.ndarray, bias_scores: np.ndarray):
-    mask = np.where(np.sign(bias_scores) != np.sign(proj_ratios), 1, 0)
-    return RMS(bias_scores * mask)
-
-
-def pairwise_cosine_similarity(x):
-    return F.cosine_similarity(x.unsqueeze(0), x.unsqueeze(1), dim=2)
 
 
 def ceildiv(a, b):
@@ -52,14 +38,38 @@ def save_to_json_file(results: List[Dict], filepath: Path, silent: bool = False)
         logging.info(f"Results saved to: {filepath}")
 
 
-def loop_coeffs(min_coeff=-1, max_coeff=1, increment=0.1):
-    coeffs = []
-    n = int((max_coeff - min_coeff)/increment) + 1
-    coeffs = np.array(range(n)) * increment + min_coeff
-    coeffs = np.round(coeffs, 2)
-
-    return coeffs.tolist()
-
 def clear_torch_cache() -> None:
     gc.collect()
     torch.cuda.empty_cache()
+
+
+class PromptIterator:
+    def __init__(self, prompts: Union[str, List[str]], batch_size=32, show_progress_bar=True, desc=None):
+        self.batch_size = batch_size
+        self.prompts = prompts
+
+        total = ceildiv(len(self.prompts), self.batch_size)
+        if total >= 5 and show_progress_bar:
+            self.pbar = tqdm(total=total)
+
+            if desc is not None:
+                self.pbar.set_description(desc)
+        else:
+            self.pbar = None
+
+    def _update(self, n):
+        if self.pbar is not None:
+            self.pbar.update(n)
+    
+    def _done(self):
+        if self.pbar is not None:
+            self.pbar.close()
+
+    def _slice_prompts(self) -> Iterator[Tuple[List[str], float]]:
+        for prompt_batch in chunks(self.prompts, self.batch_size):
+            yield prompt_batch
+            self._update(1)
+        self._done()
+
+    def __iter__(self) -> Iterable:
+        return self._slice_prompts()

@@ -1,101 +1,29 @@
 import os, warnings
 import json, argparse
-import logging, random
-from typing import List
+import logging
+from typing import List, Dict
 from pathlib import Path
-import torch
-import numpy as np
-from .steering import load_model, ModelBase
-from .eval.metrics import WildGuard
-from .eval.evaluator import Evaluator
-from .utils import save_to_json_file, clear_torch_cache, loop_coeffs
-from .config import Config, EvalConfig
-from .data.load_dataset import load_dataframe_from_json
+from .eval import WildGuard, JudgeLM, EvalPair
+from .config import Config
+from .utils import save_to_json_file
 
 
 warnings.filterwarnings("ignore")
 os.environ["TOKENIZERS_PARALLELISM"] = "false"
 logging.basicConfig(level=logging.INFO)
 
-deepseek_generation_config = {
-    "do_sample": True, "temperature": 0.6, "top_p": 0.95, "max_new_tokens": 2048
-}
-
 
 def parse_arguments():
     parser = argparse.ArgumentParser()
-    
     parser.add_argument('--config_file', type=str, required=True, help='Load configuration from file.')
-    parser.add_argument('--run_wildguard', action='store_true', help='Run WildGuard evaluation.')
-    parser.add_argument('--layer', type=int, help="Steering layer.")
-    parser.add_argument('--datasets', type=str, nargs='+', required=True, help='List of datasets.')
-    parser.add_argument('--max_new_tokens', type=int, default=256, help='Maximum number of generated tokens.')
-    parser.add_argument('--top_p', type=float, default=0.8, help='Top p value for sampling.')
-    parser.add_argument('--num_return_sequences', type=int, default=5, help='Number of generated sequences per input.')
-    parser.add_argument('--min_coeff', type=float, default=-1, help="Minimum steering coefficient.")
-    parser.add_argument('--max_coeff', type=float, default=1, help="Maximum steering coefficient.")
-    parser.add_argument('--increment', type=float, default=0.2, help="Increment of steering coefficient.")
-    parser.add_argument('--coeff', type=float, default=None, help="Steering coefficient.")
-    parser.add_argument('--batch_size', type=int, default=8, help='Batch size.')
-    parser.add_argument('--reasoning', action='store_true', help='Reasoning model.')
+    parser.add_argument('--run_wildguard', action='store_true', help='Run WildGuard.')
+    parser.add_argument('--run_judgelm', action='store_true', help='Run JudgeLM.')
+    parser.add_argument('--tasks', nargs="+", type=str, default=None, help='List of tasks to evaluate.')
+    parser.add_argument('--batch_size', type=int, default=32, help='Batch size.')
     parser.add_argument('--use_cache', action='store_true', help='Reuse stored cached results.')
     parser.add_argument('--seed', type=int, default=3456, help='Random seed.')
 
     return parser.parse_args()
-
-def get_projection_percentile(projections, pct=10, decimals=1):
-    p = np.percentile(projections, pct)
-    return float(np.round(p, decimals=decimals))
-
-
-def run_eval(
-    eval_cfg: EvalConfig, model: ModelBase, artifact_path: Path, 
-    task_list: List[str], batch_size: int, use_cache: bool = False, 
-    reasoning: bool = False
-):
-    steering_vec = torch.load(artifact_path / "activations/candidate_vectors.pt", weights_only=True)[eval_cfg.layer]
-    offset = torch.load(artifact_path / "activations/offsets.pt", weights_only=True)[eval_cfg.layer]
-    
-    val_data = load_dataframe_from_json(artifact_path / "datasplits/val.json")
-    val_projections = np.load(artifact_path / "validation/projections.npy")
-
-    k_pos = abs(get_projection_percentile(val_projections, 95)/val_data.prob_diff.quantile(0.95))
-    k_neg = abs(get_projection_percentile(val_projections, 5)/val_data.prob_diff.quantile(0.05))
-
-    evaluator = Evaluator(
-        eval_cfg, model, steering_vec, 
-        save_dir=artifact_path / "evaluation", batch_size=batch_size, offset=offset
-    )
-
-    if eval_cfg.coeff is None:
-        coeff_list = loop_coeffs(eval_cfg.min_coeff, eval_cfg.max_coeff, eval_cfg.increment)
-    else:
-        coeff_list = [eval_cfg.coeff]
-    
-    for task_name in task_list:
-        logging.info(f"Running task: {task_name}")
-        task = evaluator.load_task(task_name)
-
-        # Compute projections
-        # evaluator.compute_projections(task, layer=eval_cfg.layer, use_cache=use_cache)
-
-        # Run baseline with no steering
-        evaluator.run(task, baseline=True, use_cache=use_cache, is_reasoning=reasoning)
-
-        for coeff in coeff_list:
-            logging.info(f"Steering coefficient={coeff:.1f}")
-            if coeff > 0:
-                k = k_pos
-            elif coeff < 0:
-                k = k_neg
-            else:
-                k = 0
-
-            evaluator.run(
-                task, coeff=coeff, k=k, baseline=False, use_cache=use_cache, is_reasoning=reasoning
-            )
-
-            clear_torch_cache()
 
 
 def run_wildguard(artifact_dir: Path, batch_size: int = 16, use_cache: bool = True):
@@ -126,7 +54,7 @@ def run_wildguard(artifact_dir: Path, batch_size: int = 16, use_cache: bool = Tr
         save_to_json_file(outputs, filepath)
 
 
-def run_wildguard_deepseek(artifact_dir: Path, batch_size: int = 16, use_cache: bool = True):
+def run_wildguard_deepseek(artifact_dir: Path, task_name: str = None, batch_size: int = 16, use_cache: bool = True):
     wildguard = WildGuard()
 
     for filepath in Path(artifact_dir).rglob('*.json'):
@@ -179,6 +107,63 @@ def run_wildguard_deepseek(artifact_dir: Path, batch_size: int = 16, use_cache: 
         save_to_json_file(outputs, filepath)
 
 
+
+def run_judgelm(
+    cfg: Config, task_list: List[str] = ["alpaca_test_sampled", "xstest_safe"], 
+    baseline_output_dir: Path = None, batch_size: int = 16, use_cache: bool = True, skip_refusal: bool = True
+):
+    if baseline_output_dir is None:
+        baseline_output_dir = cfg.artifact_path() / "evaluation"
+
+    steering_output_dir = cfg.artifact_path() / "evaluation"
+    save_dir = cfg.artifact_path() / "evaluation" / "judgelm_outputs"
+    os.makedirs(save_dir, exist_ok=True)
+
+    def filter_refusal_outputs(x: Dict):
+        return [x for i, x in enumerate(x["completions"]) if x["refusal_response"][i] < 0.5]
+
+    judgelm = JudgeLM()
+
+    for task_name in task_list:
+        baseline_outputs = json.load(open(baseline_output_dir / f"{task_name}_baseline.json", "r"))
+
+        if skip_refusal and "refusal_response" in baseline_outputs[0]:
+            for x in baseline_outputs:
+                x["completions"] = filter_refusal_outputs(x)
+
+        for filepath in Path(steering_output_dir).rglob(f'{task_name}_steering_coeff=*.json'):
+            file_suffix = str(filepath).split("_")[-1]
+            judgelm_output_filepath = save_dir / f"{task_name}_{file_suffix}"
+
+            if use_cache and Path(judgelm_output_filepath).exists():
+                continue
+
+            steering_outputs = json.load(open(filepath))
+
+            all_eval_inputs = []
+            for baseline, steered in zip(baseline_outputs, steering_outputs):
+                steered_answers = steered["completions"]
+
+                if skip_refusal:
+                    steered_answers = filter_refusal_outputs(steered)
+                    if len(baseline["completions"]) == 0 and len(steered_answers) == 0:
+                        continue
+
+                all_eval_inputs.append(
+                    EvalPair(
+                        _id=baseline["_id"], 
+                        prompt=baseline["prompt"],
+                        baseline_answers=baseline["completions"], 
+                        steered_answers=steered_answers
+                    )
+                )
+
+            graded_eval_inputs = judgelm.run(all_eval_inputs, batch_size=batch_size)
+
+            eval_results = [x.to_dict() for x in graded_eval_inputs]
+            save_to_json_file(eval_results, judgelm_output_filepath)
+
+
 def main():
     args = parse_arguments()
     cfg = Config.load(args.config_file)
@@ -189,35 +174,11 @@ def main():
             run_wildguard_deepseek(cfg.artifact_path() / "evaluation", args.batch_size, use_cache=args.use_cache)
         else:
             run_wildguard(cfg.artifact_path() / "evaluation", args.batch_size, use_cache=args.use_cache)
-    else:
-        print("Model:", cfg.model_name)
 
-        random.seed(cfg.seed)
-        np.random.seed(cfg.seed)
-        model = load_model(cfg.model_name)
-
-        if args.layer is None: # Use top layer
-            args.layer = json.load(open(cfg.artifact_path() / "validation/top_layers.json", "r"))[0]['layer']
-
-        eval_cfg = EvalConfig(
-            layer=args.layer, 
-            coeff=args.coeff,
-            min_coeff=args.min_coeff, 
-            max_coeff=args.max_coeff, 
-            increment=args.increment,
-            max_new_tokens=args.max_new_tokens, 
-            num_return_sequences=args.num_return_sequences, 
-            top_p=args.top_p, do_sample=True
-        )
-
-        run_eval(
-            eval_cfg, model, cfg.artifact_path(), 
-            batch_size=args.batch_size, 
-            use_cache=args.use_cache, 
-            task_list=args.datasets, 
-            reasoning=args.reasoning
-        )
+    if args.run_judgelm:
+        run_judgelm(cfg, task_list=args.tasks, batch_size=args.batch_size, use_cache=args.use_cache)
 
 
 if __name__ == "__main__":
     main()
+    

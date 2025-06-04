@@ -1,35 +1,34 @@
 import json
 import logging
 from pathlib import Path
-from typing import Dict
 import pandas as pd
-from ..config import DataConfig
 
 DATA_DIR = Path(__file__).resolve().parent
+CENSOR_TYPES = ["refusal", "thought_suppress"]
 EVAL_DATASETS = [
-    "jailbreakbench", "sorrybench", "xstest_safe", "xstest_unsafe", "alpaca_test_sampled", 
-    "ccp_sensitive", "ccp_sensitive_sampled", "deccp_censored"
+    "jailbreakbench", "sorrybench", "alpaca_test_sampled", "xstest_safe", "xstest_unsafe",
+    "ccp_sensitive", "ccp_sensitive_sampled", "censorship_test", "deccp_sampled"
 ]
+
 
 def load_dataframe_from_json(filepath):
     data = json.load(open(filepath, "r"))
     return pd.DataFrame.from_records(data)
 
 
-def load_datasplits(data_cfg: DataConfig, save_dir: Path, use_cache: bool = False) -> Dict[str, pd.DataFrame]:
-    datasets = {}        
-    for split in ["train", "val"]:
-        if use_cache and Path(save_dir / f"{split}.json").exists():
-            logging.info(f"Loading cached data from {save_dir}/{split}.json")
-            datasets[split] = load_dataframe_from_json(save_dir / f"{split}.json")
-        else:
-            datasets[split] = load_dataframe_from_json(DATA_DIR / "datasplits" / f"{data_cfg.task}_{split}.json")
+def load_datasplit(censor_type, split="train", sample_size=-1, cached_dir: Path = None):
+    assert censor_type in CENSOR_TYPES
 
-            sample_size = getattr(data_cfg, f"n_{split}")
-            if sample_size > 0:
-                datasets[split] = datasets[split].sample(n=min(len(datasets[split]), sample_size))
-    
-    return datasets
+    if cached_dir is not None and Path(cached_dir / f"{split}.json").exists():
+        logging.info(f"Loading cached data from {cached_dir}/{split}.json")
+        data = load_dataframe_from_json(cached_dir / f"{split}.json")
+
+    else:
+        data = load_dataframe_from_json(DATA_DIR / "datasplits" / f"{censor_type}_{split}.json")
+        if sample_size > 0:
+            data = data.sample(n=min(len(data), sample_size))
+
+    return data
 
 
 def load_eval_dataset(dataset_name):
@@ -40,4 +39,3 @@ def load_eval_dataset(dataset_name):
         dataset = json.load(f)
  
     return dataset
-

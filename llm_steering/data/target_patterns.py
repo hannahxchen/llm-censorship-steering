@@ -54,7 +54,7 @@ partial_patterns = [
 ]
 
 
-REFUSAL_TARGETS = {
+TARGET_PATTERNS = {
     "refusal": "|".join(refusal_patterns), 
     "partial": "|".join(partial_patterns),
     "compliance": "|".join(compliance_patterns),
