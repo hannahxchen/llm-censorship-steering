@@ -14,7 +14,7 @@ Try out our demos:
 - 🐳 [Steering *Thought Suppression*]( https://mightbeevil.com/censorship) with DeepSeek-R1-Distill-Qwen-7B
 - 🦙 [Steering *Refusal—Compliance*](https://hannahcyberey-refusal-censorship-steering.hf.space/) with Llama-3.1-8B-Instruct 
 
-> **NOTE:** The second demo requires a Huggingface account. It's hosted with Huggingface's [ZeroGPU](https://huggingface.co/docs/hub/en/spaces-zerogpu), which is free to all users with limited daily usage quota.
+> **NOTE:** Both demos require a Huggingface account. It's hosted with Huggingface's [ZeroGPU](https://huggingface.co/docs/hub/en/spaces-zerogpu), which is free to all users with a limited daily usage quota.
 
 ## Installation
 
