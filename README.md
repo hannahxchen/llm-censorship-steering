@@ -148,15 +148,11 @@ We extract the probability of the "yes" or "no" token for each type of detection
 
 ## Citation
 If you find this work useful, please consider citing our paper:
-
 ```
-@article{cyberey2025steering,
-    title={Steering the CensorShip: Uncovering Representation Vectors for LLM "Thought" Control}, 
+@inproceedings{cyberey2025steering,
+    title={Steering the CensorShip: Uncovering Representation Vectors for {LLM} ''Thought'' Control},
     author={Hannah Cyberey and David Evans},
-    year={2025},
-    eprint={2504.17130},
-    archivePrefix={arXiv},
-    primaryClass={cs.CL},
-    url={https://arxiv.org/abs/2504.17130}, 
+    booktitle={Second Conference on Language Modeling},
+    year={2025}
 }
 ```
